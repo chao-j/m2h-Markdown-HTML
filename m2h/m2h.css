@@ -1,0 +1,155 @@
+/*样式表*/
+.m2h{
+    margin: 1em;
+    padding: 2em;
+    background-color: #f7fbe1;
+}
+.m2h *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*标题*/
+.m2h h1{
+    text-align: center;
+    margin: 10px 0;
+}
+.m2h h2{
+    margin: 10px 0;
+    padding-left: 0.5em;
+    border-left: 2px solid red;
+}
+.m2h h3{
+    margin: 10px 0;
+}
+.m2h h3:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.3em;
+    height: 0.3em;
+    margin-right: 0.3em;
+    background-color:rgba(255,0,0,0.8);
+    border-radius: 50%;
+}
+.m2h h4{
+    margin: 10px 0;
+}
+.m2h h4:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.3em;
+    height: 0.2em;
+    margin-right: 0.3em;
+    background-color:rgba(255,0,0,0.4)
+}
+.m2h h5{
+    margin: 10px 0;
+}
+.m2h h6{
+    margin: 10px 0;
+    color: #666;
+}
+/*段落与段落内格式文本*/
+.m2h p{
+    line-height: 1.5em;
+    margin: 1em 0;
+}
+.m2h a{
+    color: red;
+}
+.m2h code{
+    background-color: #ffe2bc;
+    padding: 0.3em;
+    margin: 0 0.2em;
+    color: red;
+}
+.m2h del{
+    color: #666666;
+}
+
+/*区块*/
+.m2h div.quote{
+    border-left: 5px solid rgba(255,0,0,0.5);
+    background-color: rgba(255,255,255,0.5);
+    color: #666666;
+    margin: 1em 0;
+    padding: 1em;
+}
+
+/*代码*/
+.m2h div.code-block{
+    position: relative;
+    margin: 2em 0;
+}
+.m2h div.code-block pre{
+    font-family: serif;
+    padding: 1em;
+    background-color: #383e56;
+    color: #fff;
+    min-width: 50%;
+    overflow-x: auto;
+}
+.m2h div.code-block span{
+    position: absolute;
+    right: 0;
+    font-size: 0.5em;
+    line-height: 0.5em;
+    border: 1px solid #888;
+    color: #888;
+    padding: 0.5em 1em;
+    margin-top: 0.2em;
+}
+
+/*表格*/
+.m2h table{
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2em 0;
+}
+.m2h table caption{
+    caption-side: bottom;
+    font-size: 0.8em;
+    color: #888888;
+    margin: 0.5em;
+}
+.m2h td,.m2h th{
+    padding: 0.5em;
+}
+.m2h thead{
+    background-color: #ddd;
+}
+.m2h tbody tr:nth-child(2n){
+    background-color: #ddd;
+}
+.m2h ul,.m2h ol{
+    padding-left: 2em;
+    margin-top: 0.5em;
+}
+.m2h li{
+    padding: 0;
+}
+/*非嵌套产生不同缩进的样式*/
+.m2h ul[style^="margin-left"]{
+    list-style-type: square;
+}
+.m2h ul[style="margin-left:0em"]{
+    list-style-type: disc;
+}
+.m2h ul[style="margin-left:2em"]{
+    list-style-type: circle;
+}
+.m2h ul[style="margin-left:4em"]{
+    list-style-type: square;
+}
+
+/*图片*/
+.m2h img{
+    display: block;
+    max-width: 50%;
+}
+/*
+样式表约束:
+1. ul和ol 必须有padding-left，否则li没有嵌套缩进
+*/

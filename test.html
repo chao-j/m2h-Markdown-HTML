@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./m2h/m2h.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="./m2h/m2h.css">
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        var xmlHttp=new XMLHttpRequest();
+        window.onload=function(){
+            xmlHttp.open("GET","README.md",false);
+            xmlHttp.send();
+            mdDoc=xmlHttp.responseText;
+            var m2h=new M2h({table_cap:true});
+            m2h.parse(mdDoc,function(data){
+                //console.log(data)
+                document.getElementById("container").appendChild(data)
+            })
+        };
+//        xmlHttp.onreadystatechange=function(){
+//            if(xmlHttp.status==200){
+//                mdDoc=xmlHttp.responseText;
+//                var m2h=new M2h();
+//                m2h.parse(mdDoc,function(data){
+//                    //console.log(data)
+//                    document.getElementById("container").appendChild(data)
+//                })
+//            }
+//        };
+
+    </script>
+</body>
+</html>
