@@ -23,17 +23,38 @@ var M2h=function(options){
         olli:/( *)\d\./
     };
 
-    //暴露的方法 将md格式文本解析问HTML
+    //暴露的方法1 将md格式文本解析为HTML
     function parse(md,callback){
-        var lines=md.split(/\r\n/); //基于行解析
+        var lines=md.split(/[\r\n|\r|\n]/); //基于行解析 textarea的换行符不为\r\n
         lines.push(""); //最后一行添加空行 方便边界判断
 
         htmlDoc=document.createElement("div");
         htmlDoc.setAttribute("class","m2h");
-        dispatcher(lines);
+        try{
+            dispatcher(lines);
+        }catch(e){
+            htmlDoc.innerText="Rendering error: please check the format"
+        }
+
         callback(htmlDoc);
     }
 
+    function parseInnerHtml(md){
+        var lines=md.split(/[\r\n|\r|\n]/); //基于行解析 textarea的换行符不为\r\n
+        lines.push(""); //最后一行添加空行 方便边界判断
+
+        htmlDoc=document.createElement("div");
+        htmlDoc.setAttribute("class","m2h");
+        try{
+            dispatcher(lines);
+        }catch(e){
+            htmlDoc.innerText="Rendering error: please check the format"
+        }
+
+        var tp=document.createElement("div");
+        tp.appendChild(htmlDoc);
+        return tp.innerHTML;
+    }
     //分发器 根据匹配模式进行不同类型的解析
     function dispatcher(lines){
         var i=0;
@@ -295,6 +316,7 @@ var M2h=function(options){
     }
 
     return {
-        parse:parse
+        parse:parse,
+        parseInnerHtml:parseInnerHtml
     }
 };
