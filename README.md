@@ -25,6 +25,36 @@ m2h.parse(mdDoc,function(data){
 <link rel="stylesheet" href="m2h.css">
 ```
 
+### 实时解析
+
+新增方法`parseInnerHtml(md)`方法，返回值为解析后html节点的字符串形式，配合Vue的`v-html`模板语法实现实时渲染，模板如下
+
+```html
+    <div id="app">
+        <textarea v-model="md"  rows="10" cols="50"></textarea>
+        <div v-html="hdoc">
+
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                md:''
+            },
+            computed:{
+                hdoc:function(){
+                    let m2h=new M2h();
+                    let html= m2h.parseInnerHtml(this.md);
+                    return html
+                }
+            }
+        })
+    </script>
+```
+
+`html`字符串以`<div class="m2h">...</div>`为根节点，样式表文件`m2h.css`对其同样有效
+
 ### 支持格式
 
 解析器可以简单的解析以下格式
